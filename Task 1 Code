@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+
+def plot_data(my_file):
+    # Read data from file and extract x and y values
+    with open(my_file, 'r') as file:
+        lines = file.readlines()[1:] 
+        # Skip the first line
+        x = [float(line.split(',')[0]) for line in lines]
+        y = [float(line.split(',')[1]) for line in lines]
+
+    # Create scatter plot
+    scatter_plot = plt.scatter(x, y)
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.title('Scatter Plot')
+    plt.grid(False)
+    plt.show()
+
+    return scatter_plot
+
+# Example usage
+my_file = 'x_y_coordinates.txt'
+plot_data(my_file)
